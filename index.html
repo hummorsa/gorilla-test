@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Account Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css" />
+</head>
+<body  ng-app="myAccountApp">
+<div class="container height100">
+    <div class="row vertical-center-row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div>
+                <div class="panel panel-default"  ng-controller="ProgressBarController">
+                    <div class="panel-heading">Your Progress</div>
+                    <div class="panel-body">
+                       <div class="row">
+                           <div class="col-sm-9 no-Padding">
+                               <label class="col-sm-2 text-center no-Padding">Reached:</label>
+                               <div class="no-margin-progress col-sm-offset-2">
+                                   <div class="progress">
+                                       <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" ng-style="{ 'width': progressBar.percentage + '%' }">
+                                           <span class="sr-only">40% Complete (success)</span>
+                                       </div>
+                                   </div>
+                                   <div class="percentage-container text-center" ng-style="{ 'left': progressBar.percentage + '%' }">
+                                       <div class="percentage-container-arrow" ng-show="progressBar.current >= progressBar.initial">
+                                           <div>^</div>
+                                           <span>${{progressBar.current}}</span>
+                                       </div>
+                                   </div>
+                               </div>
+
+                           </div>
+                           <div class="col-sm-3 no-Padding">
+                               <div class="target-box">
+                                   Target <br> $125
+                               </div>
+                           </div>
+                       </div>
+                        <button ng-disabled="(progressBar.current >= progressBar.max)" class="btn btn-sm pull-right btn-primary" ng-click="addOne()">Add One</button>
+                        <p><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> You need ${{progressBar.max - progressBar.current }} to reach your target.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-animate.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
